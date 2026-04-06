@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Block private section
+Disallow: /private/
+
+# Block tracking URLs (avoid duplicate content from campaigns)
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?gclid=*
+Disallow: /*?fbclid=*
+
+# Sitemap
+Sitemap: https://hyi.ai/sitemap.xml
