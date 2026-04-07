@@ -6,9 +6,19 @@ import { AGITrainingAPI } from "@/lib/services/api";
 import HeroSection from "@/components/section/course-details/heroSection";
 import AGICourseseGrid from "@/components/section/course-details/agiCoursesGrid";
 
+// ❗ prevent build-time crash (VERY IMPORTANT)
+export const dynamic = "force-dynamic";
+
 export default async function AGITraining() {
-  const agiTrainingData = await AGITrainingAPI.getCourseContent();
-  const { courseContent } = agiTrainingData;
+  let courseContent: any[] = [];
+
+  try {
+    const agiTrainingData = await AGITrainingAPI.getCourseContent();
+    courseContent = agiTrainingData?.courseContent || [];
+  } catch (error) {
+    console.error("API FAILED:", error);
+    courseContent = []; // fallback
+  }
 
   return (
     <section className="w-full flex flex-col items-center justify-center overflow-hidden gap-3 md:gap-6">
