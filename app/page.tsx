@@ -12,6 +12,8 @@ import FirstSection from "@/components/section/landingPage/firstSection";
 import SecondSection from "@/components/section/landingPage/secondSection";
 import ThirdSection from "@/components/section/landingPage/thirdSection";
 
+ 
+
 const Technologies = dynamic(
   () => import("@/components/section/general/technologies")
 );
